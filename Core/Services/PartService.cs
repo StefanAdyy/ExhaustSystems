@@ -124,7 +124,7 @@ namespace Core.Services
             catch(Exception exception)
             {
                 Console.WriteLine("An error occurred while deleting the part: " + exception.Message);
-                throw new Exception("An error occurred while deleting the dog.", exception);
+                throw new Exception("An error occurred while deleting the part.", exception);
             }
         }
     }
