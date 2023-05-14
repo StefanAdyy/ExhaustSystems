@@ -12,7 +12,9 @@ namespace DataLayer.Entities
         {
             RoleName = role;
         }
+        public Role() { }
 
+        public int Id { get; set; }
         public string RoleName { get; set; }
     }
 }
