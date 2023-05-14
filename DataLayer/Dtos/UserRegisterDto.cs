@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Dtos
 {
-    public class UserDto
+    public class UserRegisterDto
     {
         public int? Id { get; set; } = null;
         public string Username { get; set; } = string.Empty;
