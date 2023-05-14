@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Dtos
+namespace DataLayer.Dtos
 {
-    public class PartDto
+    public class AddPartDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
