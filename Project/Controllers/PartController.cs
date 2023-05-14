@@ -4,6 +4,7 @@ using DataLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Project.Controllers
 {
@@ -26,7 +27,7 @@ namespace Project.Controllers
             try
             {
                 var results = partService.GetAll();
-                return Ok();
+                return Ok(results);
             }
             catch (Exception exception)
             {
@@ -42,7 +43,7 @@ namespace Project.Controllers
             try
             {
                 var part = partService.GetById(partId);
-                return Ok();
+                return Ok(part);
             }
             catch(Exception exception)
             {
@@ -55,6 +56,13 @@ namespace Project.Controllers
         [Authorize]
         public ActionResult AddPart(AddPartDto payload)
         {
+            var currentUser = HttpContext.User;
+
+            if (!currentUser.IsInRole("Admin"))
+            {
+                return Unauthorized();
+            }
+
             try
             {
                 partService.AddPart(payload);
@@ -70,6 +78,13 @@ namespace Project.Controllers
         [Authorize]
         public ActionResult<bool> GetById([FromBody] EditPartDto payload)
         {
+            var currentUser = HttpContext.User;
+
+            if (!currentUser.IsInRole("Admin"))
+            {
+                return Unauthorized();
+            }
+
             var result = partService.EditPartDetails(payload);
 
             if (!result)
@@ -77,20 +92,27 @@ namespace Project.Controllers
                 return BadRequest("Part could not be updated.");
             }
 
-            return result;
+            return Ok(result);
         }
 
         [HttpDelete("/delete-part")]
         [Authorize]
         public ActionResult<bool> Deletepart(int partId)
         {
+            var currentUser = HttpContext.User;
+
+            if (!currentUser.IsInRole("Admin"))
+            {
+                return Unauthorized();
+            }
+
             var result = partService.DeletePart(partId);
             if (!result)
             {
                 return BadRequest("Part could not be deleted.");
             }
 
-            return result;
+            return Ok(result);
         }
     }
 }

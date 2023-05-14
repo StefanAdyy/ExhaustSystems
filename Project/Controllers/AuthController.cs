@@ -27,10 +27,11 @@ namespace Project.Controllers
         {
             authService.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.Id = request.Id;
             user.Username = request.Username;
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            user.Name=request.Name;
+            user.Address = request.Address;
             user.Role = new Role(request.Role);
 
             return Ok(user);

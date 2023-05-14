@@ -9,9 +9,10 @@ namespace DataLayer.Dtos
 {
     public class UserRegisterDto
     {
-        public int? Id { get; set; } = null;
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+        public string Name { get; set; }
+        public string Address { get; set; }
         public string Role { get; set; } = string.Empty;
     }
 }
