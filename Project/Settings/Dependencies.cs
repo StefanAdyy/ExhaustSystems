@@ -24,6 +24,10 @@ namespace Project.Settings
             services.AddScoped<StudentService>();
             services.AddScoped<ClassService>();
             services.AddScoped<AuthService>();
+            services.AddScoped<UserService>();
+            services.AddScoped<OrderService>();
+            services.AddScoped<OrderPartService>();
+            services.AddScoped<PartService>();
         }
 
         private static void AddRepositories(IServiceCollection services)
@@ -31,6 +35,10 @@ namespace Project.Settings
             services.AddScoped<StudentsRepository>();
             services.AddScoped<ClassRepository>();
             services.AddScoped<UnitOfWork>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<OrderRepository>();
+            services.AddScoped<OrderPartRepository>();
+            services.AddScoped<PartRepository>();
         }
 
     }
