@@ -8,7 +8,7 @@ namespace DataLayer
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                    .UseSqlServer("Server=localhost;Database=LabProject;User Id=stefan;Password=1q2w3e;")
+                    .UseSqlServer("Server=localhost;Database=ExhaustSystems;User Id=stefan;Password=1q2w3e;")
                     .LogTo(Console.WriteLine);
         }
 
@@ -22,5 +22,8 @@ namespace DataLayer
         public DbSet<Class> Classes { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Part> Parts { get; set; }
     }
 }
