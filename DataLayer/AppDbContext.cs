@@ -1,6 +1,7 @@
 ﻿using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace DataLayer
 {
     public class AppDbContext : DbContext
@@ -16,7 +17,7 @@ namespace DataLayer
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Class>().Property(e => e.Name).HasMaxLength(10);
+            //modelBuilder.Entity<Class>().Property(e => e.Name).HasMaxLength(10);
         }
 
         public DbSet<Class> Classes { get; set; }

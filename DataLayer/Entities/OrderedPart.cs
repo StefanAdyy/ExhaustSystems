@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Entities
 {
-    public class OrderedPart
+    public class OrderedPart:BaseEntity
     {
         public int ID { get; set; }
         public int OrderID { get; set; }
