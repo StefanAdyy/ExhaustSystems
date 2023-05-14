@@ -154,7 +154,7 @@ namespace DataLayer.Migrations
                         .IsRequired();
 
                     b.HasOne("DataLayer.Entities.Part", "Part")
-                        .WithMany("OrderedParts")
+                        .WithMany()
                         .HasForeignKey("PartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -174,11 +174,6 @@ namespace DataLayer.Migrations
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Order", b =>
-                {
-                    b.Navigation("OrderedParts");
-                });
-
-            modelBuilder.Entity("DataLayer.Entities.Part", b =>
                 {
                     b.Navigation("OrderedParts");
                 });

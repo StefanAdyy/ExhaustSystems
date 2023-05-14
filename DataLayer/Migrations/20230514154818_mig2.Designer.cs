@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230514151123_mig1")]
-    partial class mig1
+    [Migration("20230514154818_mig2")]
+    partial class mig2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,7 +157,7 @@ namespace DataLayer.Migrations
                         .IsRequired();
 
                     b.HasOne("DataLayer.Entities.Part", "Part")
-                        .WithMany("OrderedParts")
+                        .WithMany()
                         .HasForeignKey("PartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -177,11 +177,6 @@ namespace DataLayer.Migrations
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Order", b =>
-                {
-                    b.Navigation("OrderedParts");
-                });
-
-            modelBuilder.Entity("DataLayer.Entities.Part", b =>
                 {
                     b.Navigation("OrderedParts");
                 });
