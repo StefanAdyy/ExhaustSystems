@@ -23,7 +23,7 @@ namespace Project.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
+        public async Task<ActionResult<User>> Register(UserRegisterDto request)
         {
             authService.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
