@@ -16,6 +16,6 @@ namespace DataLayer.Entities
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
 
-        public ICollection<OrderedPart> OrderedParts { get; set; }
+        public ICollection<OrderPart> OrderedParts { get; set; }
     }
 }
