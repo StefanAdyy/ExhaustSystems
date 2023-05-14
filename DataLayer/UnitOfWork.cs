@@ -8,16 +8,12 @@ namespace DataLayer
         public OrderRepository Orders{ get; }
         public PartRepository Parts { get; }
         public OrderPartRepository OrderParts { get; }
-        public StudentsRepository Students { get; }
-        public ClassRepository Classes { get; }
 
         private readonly AppDbContext _dbContext;
 
         public UnitOfWork
         (
             AppDbContext dbContext,
-            StudentsRepository studentsRepository,
-            ClassRepository classes,
             UserRepository users,
             OrderRepository orders,
             OrderPartRepository orderParts,
@@ -25,8 +21,6 @@ namespace DataLayer
         )
         {
             _dbContext = dbContext;
-            Students = studentsRepository;
-            Classes = classes;
             Users = users;
             Orders = orders;
             OrderParts = orderParts;

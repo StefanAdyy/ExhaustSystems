@@ -20,20 +20,20 @@ namespace Core.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddPart(AddPartDto part)
+        public void AddPart(AddPartDto payload)
         {
             try
             {
-                if (part == null)
+                if (payload == null)
                 {
                     return;
                 }
 
                 var newPart = new Part
                 {
-                    Name = part.Name,
-                    Description = part.Description,
-                    Code = part.Code
+                    Name = payload.Name,
+                    Description = payload.Description,
+                    Code = payload.Code
                 };
 
                 unitOfWork.Parts.Insert(newPart);
@@ -76,24 +76,24 @@ namespace Core.Services
             }
         }
 
-        public bool EditPartDetails(EditPartDto editPartDto)
+        public bool EditPartDetails(EditPartDto payload)
         {
             try
             {
-                if (editPartDto == null)
+                if (payload == null)
                 {
                     return false;
                 }
 
-                var result = unitOfWork.Parts.GetById(editPartDto.Id);
+                var result = unitOfWork.Parts.GetById(payload.Id);
                 if (result == null)
                 {
                     return false;
                 }
 
-                result.Description = editPartDto.Description;
-                result.Name = editPartDto.Name;
-                result.Code = editPartDto.Code;
+                result.Description = payload.Description;
+                result.Name = payload.Name;
+                result.Code = payload.Code;
 
                 unitOfWork.Parts.Update(result);
                 unitOfWork.SaveChanges();
